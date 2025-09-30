@@ -1,7 +1,7 @@
 [project]
 name = "my-agent"
 version = "0.1.0"
-description = "Add your description here"
+description = "Intelligent API agent powered by Google Gemini 2.0 Flash with conversation context and structured responses"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
@@ -10,4 +10,10 @@ dependencies = [
     "langchain-community>=0.3.30",
     "langchain-google-genai>=2.1.12",
     "pydantic>=2.11.9",
+    "python-dotenv>=1.0.0",
+    "requests>=2.31.0",
 ]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
