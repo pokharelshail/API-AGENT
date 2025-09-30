@@ -24,7 +24,7 @@ An intelligent API agent powered by Google's Gemini 2.0 Flash that can interact 
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/pokharelshail/API-AGENT.git
    cd my-agent
    ```
 
