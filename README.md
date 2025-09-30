@@ -50,7 +50,7 @@ An intelligent API agent powered by Google's Gemini 2.0 Flash that can interact 
    
    **With UV:**
    ```bash
-   uv run python main.py
+   uv run main.py
    # or activate the environment first
    uv shell
    python main.py
