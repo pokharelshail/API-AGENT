@@ -50,7 +50,7 @@ An intelligent API agent powered by Google's Gemini 2.0 Flash that can interact 
    
    **With UV:**
    ```bash
-   uv run main.py
+   uv run python main.py
    # or activate the environment first
    uv shell
    python main.py
@@ -60,6 +60,49 @@ An intelligent API agent powered by Google's Gemini 2.0 Flash that can interact 
    ```bash
    python main.py
    ```
+
+## 🎛️ Command Line Options
+
+The agent supports several command line options:
+
+```bash
+python main.py [OPTIONS]
+
+Options:
+  -h, --help              Show help message and exit
+  -v, --verbose          Enable verbose mode for detailed debugging output
+  --max-exchanges INT    Maximum number of conversation exchanges to keep in session (default: 50)
+```
+
+### Examples
+
+**Basic usage:**
+```bash
+python main.py
+```
+
+**With verbose mode:**
+```bash
+python main.py --verbose
+# or
+python main.py -v
+```
+
+**Custom session limit:**
+```bash
+python main.py --max-exchanges 100
+```
+
+**Combined options:**
+```bash
+python main.py --verbose --max-exchanges 25
+```
+
+**With UV:**
+```bash
+uv run python main.py --verbose
+uv run python main.py --max-exchanges 100
+```
 
 ## 💡 Usage
 
@@ -243,11 +286,14 @@ def my_custom_tool(input_param: str) -> str:
 
 **Interactive testing:**
 ```bash
-# With UV
-uv run python main.py
-
-# With regular Python
+# Basic mode
 python main.py
+
+# With verbose debugging
+python main.py --verbose
+
+# With UV
+uv run python main.py --verbose
 ```
 
 **Quick API test:**
@@ -255,7 +301,7 @@ python main.py
 # With UV
 uv run python -c "
 from agent import Agent
-agent = Agent()
+agent = Agent(verbose=True)
 response = agent.run('Get data from https://httpbin.org/get')
 print(response.message)
 "
@@ -263,7 +309,7 @@ print(response.message)
 # With regular Python
 python -c "
 from agent import Agent
-agent = Agent()
+agent = Agent(verbose=True)
 response = agent.run('Get data from https://httpbin.org/get')
 print(response.message)
 "

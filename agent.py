@@ -107,10 +107,10 @@ class AgentResponse(BaseModel):
 
 
 class Agent:
-    def __init__(self, max_exchanges: int = 50):
+    def __init__(self, max_exchanges: int = 50, verbose: bool = False):
         # Setup session manager with exchange limit, not character limit
         self.session_manager = SessionManager(max_exchanges)
-        
+        self.verbose = verbose
         # Setup LLM
         self.chat_model = ChatGoogleGenerativeAI(
             model="gemini-2.0-flash-001",
@@ -173,12 +173,14 @@ RESPONSE FORMATTING RULES:
         self.agent_executor = AgentExecutor(
             agent=agent,
             tools=self.tools,
-            verbose=False,
+            verbose=self.verbose,
             max_iterations=10
         )
         
         print("✅ Agent ready with Gemini 2.0 Flash")
         print(f"📝 Session management: Up to {max_exchanges} exchanges (no character limits)")
+        if verbose:
+            print("🔍 Verbose mode: ON (detailed debugging enabled)")
     
     def run(self, input_text: str) -> AgentResponse:
         """Run the agent with user input and session context"""
